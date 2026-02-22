@@ -2,6 +2,19 @@
 
 An emotion-aware, multilingual chatbot that recommends realistic quotes and supportive replies based on user intent and mood.
 
+## Problem Statement
+
+In today's fast-paced digital life, many users experience stress, demotivation, emotional imbalance, or lack of inspiration due to academic, professional, or personal pressure.
+Although motivational and emotional support content is widely available online, users often need to manually search across websites and social media, which is slow, repetitive, and not personalized.
+
+This project solves that gap by building an interactive chatbot that:
+
+- understands user intent and emotional context in natural language
+- returns relevant quote categories in real time (motivation, inspiration, love, success, humor, and emotional support)
+- provides a conversational and personalized experience instead of static quote browsing
+
+The goal is to improve accessibility to uplifting content, increase user engagement, and provide quick emotional encouragement through AI-driven conversation.
+
 ## Features
 
 - Intent-based quote recommendations: motivation, inspiration, success, love, funny
