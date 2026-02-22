@@ -1,23 +1,34 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT_DIR="/Users/aanyagarg/Desktop/PROJECT 1"
-PYTHON_BIN="/opt/anaconda3/envs/rasa_env/bin/python"
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RASA_PORT="${RASA_PORT:-5005}"
 WEB_PORT="${WEB_PORT:-8010}"
+
+if [ -n "${PYTHON_BIN:-}" ]; then
+  :
+elif [ -n "${CONDA_PREFIX:-}" ] && [ -x "${CONDA_PREFIX}/bin/python" ]; then
+  PYTHON_BIN="${CONDA_PREFIX}/bin/python"
+elif command -v python3 >/dev/null 2>&1; then
+  PYTHON_BIN="$(command -v python3)"
+elif command -v python >/dev/null 2>&1; then
+  PYTHON_BIN="$(command -v python)"
+else
+  echo "Python not found."
+  echo "Install Python 3.10+ or set PYTHON_BIN=/path/to/python"
+  exit 1
+fi
 
 cd "$PROJECT_DIR"
 mkdir -p logs .pids models
 
-if [ ! -x "$PYTHON_BIN" ]; then
-  echo "Missing Python: $PYTHON_BIN"
-  echo "Fix env first: conda create -n rasa_env python=3.10"
-  exit 1
-fi
+echo "Project dir: $PROJECT_DIR"
+echo "Using Python: $PYTHON_BIN"
 
 if ! "$PYTHON_BIN" -c "import rasa" >/dev/null 2>&1; then
-  echo "Rasa is not installed in rasa_env."
-  echo "Run: conda activate rasa_env && python -m pip install rasa"
+  echo "Rasa is not installed in this Python environment."
+  echo "Run: \"$PYTHON_BIN\" -m pip install rasa"
+  echo "If using conda, activate your env first (example: conda activate rasa_env)."
   exit 1
 fi
 
@@ -32,7 +43,7 @@ fi
 
 MODEL_FILE="${MODEL_FILE:-$(latest_model)}"
 if [ -z "$MODEL_FILE" ]; then
-  echo "No trained model found. Run: python -m rasa train"
+  echo "No trained model found. Run: $PYTHON_BIN -m rasa train"
   exit 1
 fi
 

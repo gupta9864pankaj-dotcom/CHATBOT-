@@ -39,7 +39,7 @@ An emotion-aware, multilingual chatbot that recommends realistic quotes and supp
 ```bash
 conda create -n rasa_env python=3.10 -y
 conda activate rasa_env
-cd "/Users/aanyagarg/Desktop/PROJECT 1"
+cd "<project-folder-path>"
 python -m pip install --upgrade pip
 python -m pip install rasa
 python -m pip install -r requirements-web.txt
@@ -49,7 +49,7 @@ python -m pip install -r requirements-web.txt
 
 ```bash
 conda activate rasa_env
-cd "/Users/aanyagarg/Desktop/PROJECT 1"
+cd "<project-folder-path>"
 python -m rasa train
 ```
 
@@ -61,7 +61,7 @@ Terminal 1 (Rasa backend):
 
 ```bash
 conda activate rasa_env
-cd "/Users/aanyagarg/Desktop/PROJECT 1"
+cd "<project-folder-path>"
 python -m rasa run --model "$(ls -t models/*.tar.gz | head -1)" --enable-api --cors "*" --port 5005
 ```
 
@@ -69,7 +69,7 @@ Terminal 2 (Web app):
 
 ```bash
 conda activate rasa_env
-cd "/Users/aanyagarg/Desktop/PROJECT 1"
+cd "<project-folder-path>"
 WEB_PORT=8010 RASA_ENDPOINT="http://127.0.0.1:5005/webhooks/rest/webhook" python app.py
 ```
 
@@ -80,14 +80,14 @@ Open:
 ## Run (One Command)
 
 ```bash
-cd "/Users/aanyagarg/Desktop/PROJECT 1"
+cd "<project-folder-path>"
 ./start_project.sh
 ```
 
 Stop services:
 
 ```bash
-cd "/Users/aanyagarg/Desktop/PROJECT 1"
+cd "<project-folder-path>"
 ./stop_project.sh
 ```
 
@@ -119,9 +119,9 @@ python -m rasa test
   - Start backend first:
   - `python -m rasa run --enable-api --cors "*"`
 
-- `cd: no such file or directory: /Users/.../PROJECT 1`
+- `cd: no such file or directory: <project-folder-path>`
   - Wrap path in quotes because of space:
-  - `cd "/Users/aanyagarg/Desktop/PROJECT 1"`
+  - `cd "<project-folder-path>"`
 
 ## License
 
