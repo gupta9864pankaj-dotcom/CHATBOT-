@@ -136,6 +136,35 @@ python -m rasa test
   - Wrap path in quotes because of space:
   - `cd "<project-folder-path>"`
 
+## Quick Fix: "Rasa server is offline"
+
+If the web page shows this error, it means `app.py` is running but Rasa backend is not reachable on port `5005`.
+
+Use this direct method:
+
+1. Start Rasa backend first (Terminal 1):
+```bash
+cd Project
+conda activate rasa_env
+python -m rasa train
+python -m rasa run --enable-api --cors "*" --port 5005 --debug
+```
+
+2. Start web app second (Terminal 2):
+```bash
+cd Project
+conda activate rasa_env
+RASA_ENDPOINT="http://127.0.0.1:5005/webhooks/rest/webhook" python app.py
+```
+
+3. Open browser:
+- `http://127.0.0.1:8010`
+
+4. Verify backend is live:
+- `http://127.0.0.1:5005/status`
+
+If `/status` does not open, Rasa backend is not running correctly. Check Terminal 1 logs and fix that first.
+
 ## License
 
 For academic and learning use.
