@@ -1,0 +1,267 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - hi
+      - hello
+      - hey
+      - good morning
+      - namaste
+      - namaskar
+      - kaise ho
+      - नमस्ते
+      - नमस्कार
+      - హాయ్
+      - నమస్తే
+      - ఎలా ఉన్నావు
+
+  - intent: goodbye
+    examples: |
+      - bye
+      - goodbye
+      - see you
+      - good night
+      - phir milte hain
+      - अलविदा
+      - फिर मिलते हैं
+      - बाय
+      - మళ్లీ కలుద్దాం
+      - బై
+      - take care
+
+  - intent: ask_motivation
+    examples: |
+      - motivate me
+      - i need motivation
+      - give me motivational quote
+      - motivate me for exam
+      - motivate me for work
+      - mujhe motivation chahiye
+      - mujhe motivate karo
+      - मुझे मोटिवेशन चाहिए
+      - मुझे पढ़ाई के लिए motivate करो
+      - నాకు మోటివేషన్ కావాలి
+      - నాకు చదువు కోసం motivate చేయి
+      - నాకు ఒక motivational quote ఇవ్వు
+
+  - intent: ask_inspiration
+    examples: |
+      - inspire me
+      - i need inspiration
+      - inspirational quote please
+      - give inspiring message
+      - i want inspirational line
+      - mujhe inspiration do
+      - inspirational quote do
+      - मुझे प्रेरणा चाहिए
+      - प्रेरणादायक quote दो
+      - నాకు ప్రేరణ కావాలి
+      - inspirational quote ఇవ్వు
+      - నన్ను inspire చేయి
+
+  - intent: ask_success
+    examples: |
+      - success quote please
+      - quote about success
+      - i want success motivation
+      - career success quote do
+      - give me achievement quote
+      - safalta quote do
+      - success ke liye quote do
+      - सफलता पर quote दो
+      - career में success के लिए कुछ बोलो
+      - విజయంపై quote చెప్పు
+      - నాకు success quote కావాలి
+      - ఉద్యోగంలో growth కోసం quote ఇవ్వు
+
+  - intent: ask_love
+    examples: |
+      - love quote please
+      - quote about love
+      - romantic quote do
+      - give me heart touching line
+      - प्यार पर quote दो
+      - love message do
+      - मुझे romantic quote चाहिए
+      - प्रेम पर quote दो
+      - నాకు love quote కావాలి
+      - romantic line చెప్పు
+      - ప్రేమ గురించి quote చెప్పు
+
+  - intent: ask_funny
+    examples: |
+      - tell me something funny
+      - make me laugh
+      - funny quote please
+      - joke quote do
+      - मजेदार quote दो
+      - मुझे हंसाओ
+      - funny line बोलो
+      - हास्य quote दो
+      - నాకు funny quote కావాలి
+      - నవ్వించే line చెప్పు
+      - ఒక joke చెప్పు
+
+  - intent: emotion_stress
+    examples: |
+      - i am stressed
+      - too much pressure on me
+      - i feel overloaded
+      - i cannot handle this workload
+      - exam pressure is killing me
+      - mujhe bahut stress ho raha hai
+      - मैं बहुत तनाव में हूं
+      - पढ़ाई का बहुत pressure है
+      - काम का बहुत stress है
+      - నాకు చాలా ఒత్తిడి ఉంది
+      - నాకు చాలా టెన్షన్ గా ఉంది
+      - pressure వల్ల concentrate చేయలేకపోతున్నా
+
+  - intent: emotion_anxiety
+    examples: |
+      - i am anxious
+      - i am overthinking everything
+      - my heart is racing and i am worried
+      - i feel panic about future
+      - mujhe anxiety ho rahi hai
+      - dil ghabra raha hai
+      - मुझे घबराहट हो रही है
+      - future को लेकर डर लग रहा है
+      - నాకు చాలా భయం వేస్తుంది
+      - నేను ఎక్కువగా overthink చేస్తున్నాను
+      - నాకు anxiety గా ఉంది
+
+  - intent: emotion_sadness
+    examples: |
+      - i feel very sad
+      - i feel low today
+      - i feel empty
+      - my mood is down
+      - i am emotionally tired
+      - मैं उदास हूं
+      - मेरा मन बहुत दुखी है
+      - आज बहुत low feel हो रहा है
+      - నాకు చాలా బాధగా ఉంది
+      - నా mood చాలా down గా ఉంది
+      - నేను emotional గా అలసిపోయాను
+
+  - intent: emotion_lonely
+    examples: |
+      - i feel lonely
+      - i feel alone
+      - no one understands me
+      - i have no one to talk to
+      - i feel disconnected from everyone
+      - मुझे अकेलापन लग रहा है
+      - मैं बहुत अकेला महसूस कर रहा हूं
+      - बात करने वाला कोई नहीं है
+      - నాకు ఒంటరిగా అనిపిస్తోంది
+      - నన్నెవరూ అర్థం చేసుకోవడం లేదు
+      - మాట్లాడడానికి ఎవరూ లేరు
+
+  - intent: emotion_failure
+    examples: |
+      - i failed
+      - i made mistakes and feel useless
+      - i lost confidence after failure
+      - i feel like i am not good enough
+      - i messed up badly
+      - मैं फेल हो गया
+      - मुझसे गलती हो गई और अब confidence नहीं है
+      - मुझे लग रहा है मैं किसी काम का नहीं हूं
+      - నేను ఫెయిల్ అయ్యాను
+      - నేను తప్పు చేశాను, నాకింకా confidence లేదు
+      - నేను సరిపోను అనిపిస్తోంది
+
+  - intent: ask_another
+    examples: |
+      - another quote
+      - one more
+      - give me next quote
+      - can i get more
+      - aur ek do
+      - एक और quote दो
+      - और बताओ
+      - ఇంకో quote ఇవ్వు
+      - next చెప్పు
+      - మరొకటి చెప్పు
+
+  - intent: affirm
+    examples: |
+      - yes
+      - yeah
+      - helpful
+      - that helped
+      - good
+      - हां
+      - ठीक है
+      - यह useful था
+      - అవును
+      - బాగుంది
+      - ఇది ఉపయోగపడింది
+
+  - intent: deny
+    examples: |
+      - no
+      - not helpful
+      - this did not help
+      - try better
+      - not this one
+      - नहीं
+      - useful नहीं था
+      - यह काम नहीं आया
+      - కాదు
+      - ఇది పనిచేయలేదు
+      - ఇది helpful కాదు
+
+  - intent: thanks
+    examples: |
+      - thanks
+      - thank you
+      - appreciate it
+      - thanks a lot
+      - शुक्रिया
+      - धन्यवाद
+      - बहुत बहुत धन्यवाद
+      - ధన్యవాదాలు
+      - చాలా థ్యాంక్స్
+
+  - intent: bot_challenge
+    examples: |
+      - are you a bot
+      - are you human
+      - who are you
+      - तुम bot हो क्या
+      - क्या तुम इंसान हो
+      - నువ్వు బాట్నా
+      - నువ్వు మనిషివా
+
+  - intent: out_of_scope
+    examples: |
+      - what is weather today
+      - book a cab for me
+      - play songs
+      - solve my math homework
+      - train ticket book karo
+      - आज का क्रिकेट स्कोर बताओ
+      - weather बताओ
+      - నాకు weather చెప్పు
+      - cab బుక్ చేయి
+      - youtube open cheyyi
+
+  - regex: motivation_words
+    examples: |
+      - (?i)motivat(e|ion|ional)?|मोटिवेशन|motivate|మోటివేషన్
+
+  - regex: inspiration_words
+    examples: |
+      - (?i)inspir(e|ation|ational)?|प्रेरणा|प्रेरणादायक|ప్రేరణ
+
+  - regex: success_words
+    examples: |
+      - (?i)success|achievement|winning|सफलता|सफल|విజయం|success
+
+  - regex: emotion_words
+    examples: |
+      - (?i)stress|anxiety|sad|lonely|तनाव|घबराहट|उदास|अकेला|ఒత్తిడి|భయం|బాధ|ఒంటరి

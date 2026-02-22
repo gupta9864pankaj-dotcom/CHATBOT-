@@ -1,0 +1,107 @@
+version: "3.1"
+
+rules:
+  - rule: greet
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: bot challenge
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  - rule: motivation quote
+    steps:
+      - intent: ask_motivation
+      - action: utter_motivation
+      - action: utter_followup
+
+  - rule: inspiration quote
+    steps:
+      - intent: ask_inspiration
+      - action: utter_inspiration
+      - action: utter_followup
+
+  - rule: success quote
+    steps:
+      - intent: ask_success
+      - action: utter_success
+      - action: utter_followup
+
+  - rule: love quote
+    steps:
+      - intent: ask_love
+      - action: utter_love
+      - action: utter_followup
+
+  - rule: funny quote
+    steps:
+      - intent: ask_funny
+      - action: utter_funny
+      - action: utter_followup
+
+  - rule: stress support
+    steps:
+      - intent: emotion_stress
+      - action: utter_emotion_stress
+      - action: utter_followup
+
+  - rule: anxiety support
+    steps:
+      - intent: emotion_anxiety
+      - action: utter_emotion_anxiety
+      - action: utter_followup
+
+  - rule: sadness support
+    steps:
+      - intent: emotion_sadness
+      - action: utter_emotion_sadness
+      - action: utter_followup
+
+  - rule: lonely support
+    steps:
+      - intent: emotion_lonely
+      - action: utter_emotion_lonely
+      - action: utter_followup
+
+  - rule: failure support
+    steps:
+      - intent: emotion_failure
+      - action: utter_emotion_failure
+      - action: utter_followup
+
+  - rule: ask another
+    steps:
+      - intent: ask_another
+      - action: utter_another_prompt
+
+  - rule: affirm feedback
+    steps:
+      - intent: affirm
+      - action: utter_glad
+
+  - rule: deny feedback
+    steps:
+      - intent: deny
+      - action: utter_retry
+
+  - rule: thanks response
+    steps:
+      - intent: thanks
+      - action: utter_welcome
+
+  - rule: out of scope
+    steps:
+      - intent: out_of_scope
+      - action: utter_out_of_scope
+
+  - rule: fallback
+    steps:
+      - intent: nlu_fallback
+      - action: utter_default

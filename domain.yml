@@ -1,0 +1,103 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - ask_motivation
+  - ask_inspiration
+  - ask_success
+  - ask_love
+  - ask_funny
+  - emotion_stress
+  - emotion_anxiety
+  - emotion_sadness
+  - emotion_lonely
+  - emotion_failure
+  - ask_another
+  - affirm
+  - deny
+  - thanks
+  - bot_challenge
+  - out_of_scope
+  - nlu_fallback
+
+responses:
+  utter_greet:
+    - text: "I am here for you. You can chat in English, Hindi, or Telugu. Tell me your mood or ask for motivation, inspiration, success, love, or funny quotes."
+    - text: "You are not alone. Type in English/Hindi/Telugu and I will help with realistic, uplifting quotes."
+
+  utter_motivation:
+    - text: "Motivation: 'You do not need perfect conditions. You need one honest start.' Practical step: pick one 10-minute task now."
+    - text: "Motivation: 'Consistency beats intensity.' Real step: choose one small action you can repeat daily."
+    - text: "Motivation: 'Action reduces fear.' Start with the easiest part first, then build momentum."
+
+  utter_inspiration:
+    - text: "Inspiration: 'Your next chapter does not need to look like your last one.' Reflect, reset, and begin again today."
+    - text: "Inspiration: 'Progress is still progress, even when it is slow.' Keep one promise to yourself today."
+    - text: "Inspiration: 'The future changes when your next decision changes.' Make one brave choice now."
+
+  utter_success:
+    - text: "Success: 'Success is built in ordinary days.' Real rule: sleep well, plan clearly, and execute consistently."
+    - text: "Success: 'Discipline is self-respect in action.' Decide your top 3 priorities for today and finish them."
+    - text: "Success: 'What you track, improves.' Track time, effort, and learning, not just outcomes."
+
+  utter_love:
+    - text: "Love: 'Healthy love feels safe, honest, and respectful.' Start with clear communication and boundaries."
+    - text: "Love: 'Being understood matters more than being impressed.' Speak truth gently and listen fully."
+    - text: "Love: 'Care is shown in daily actions, not big words alone.' Small kindness is powerful."
+
+  utter_funny:
+    - text: "Funny: 'My brain has too many tabs open, and one is playing mystery music.'"
+    - text: "Funny: 'I planned to be productive, then my pillow gave better arguments.'"
+    - text: "Funny: 'I need a six-month vacation, twice a year.'"
+
+  utter_emotion_stress:
+    - text: "I hear you. You are overloaded, not broken. Try this now: 4 deep breaths, then do just one small task for 10 minutes."
+    - text: "Stress is a signal, not your identity. Pause, drink water, and finish one tiny action first."
+
+  utter_emotion_anxiety:
+    - text: "That anxiety is real, and you are safe right now. Ground yourself: name 5 things you see, then focus on one next step."
+    - text: "When thoughts race, simplify. Write your biggest worry, then write one action you can control today."
+
+  utter_emotion_sadness:
+    - text: "I am sorry you are feeling low. You do not need to fix everything today. Do one gentle thing: rest, walk, or talk to someone you trust."
+    - text: "Feeling sad does not mean you are weak. Be kind to yourself today and keep your routine minimal but steady."
+
+  utter_emotion_lonely:
+    - text: "Loneliness can feel heavy. Please reach out to one person, even with a short message: 'Can we talk for 5 minutes?'"
+    - text: "You deserve connection. Start small: text one friend/family member and share honestly how you feel."
+
+  utter_emotion_failure:
+    - text: "Failure hurts, but it also gives direction. You are not your result. Write 1 lesson, 1 correction, and 1 next attempt date."
+    - text: "Setback is data, not destiny. Review what went wrong, fix one process, and try again with a smaller target first."
+
+  utter_followup:
+    - text: "If you want, type 'another' for more, or tell me exactly how you feel right now."
+
+  utter_another_prompt:
+    - text: "Sure. Choose one: motivation, inspiration, success, love, funny, stress, anxiety, sadness, lonely, or failure."
+
+  utter_glad:
+    - text: "I am glad it helped. Keep going one step at a time."
+
+  utter_retry:
+    - text: "Thanks for telling me honestly. Tell me your exact feeling, and I will respond better."
+
+  utter_welcome:
+    - text: "You are welcome. I am here whenever you need support."
+
+  utter_goodbye:
+    - text: "Take care. One small step today is enough."
+
+  utter_iamabot:
+    - text: "I am QuoteBot, an emotion-aware quotes assistant powered by Rasa."
+
+  utter_out_of_scope:
+    - text: "I mainly support emotional guidance and quote categories: motivation, inspiration, success, love, funny, stress, anxiety, sadness, lonely, and failure."
+
+  utter_default:
+    - text: "I did not fully understand. Please type your feeling (stress/anxiety/sad/lonely/failure) or a quote category."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

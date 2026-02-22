@@ -1,0 +1,26 @@
+version: "3.1"
+
+stories:
+  - story: test stress support
+    steps:
+      - user: |
+          i am stressed
+        intent: emotion_stress
+      - action: utter_emotion_stress
+      - action: utter_followup
+
+  - story: test motivation quote
+    steps:
+      - user: |
+          motivate me
+        intent: ask_motivation
+      - action: utter_motivation
+      - action: utter_followup
+
+  - story: test hindi inspiration
+    steps:
+      - user: |
+          मुझे प्रेरणा चाहिए
+        intent: ask_inspiration
+      - action: utter_inspiration
+      - action: utter_followup

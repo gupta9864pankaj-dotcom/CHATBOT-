@@ -1,0 +1,33 @@
+version: "3.1"
+
+stories:
+  - story: user stressed then asks motivation
+    steps:
+      - intent: emotion_stress
+      - action: utter_emotion_stress
+      - action: utter_followup
+      - intent: ask_motivation
+      - action: utter_motivation
+      - action: utter_followup
+
+  - story: user sad then asks funny and thanks
+    steps:
+      - intent: emotion_sadness
+      - action: utter_emotion_sadness
+      - action: utter_followup
+      - intent: ask_funny
+      - action: utter_funny
+      - action: utter_followup
+      - intent: thanks
+      - action: utter_welcome
+
+  - story: another request flow
+    steps:
+      - intent: ask_inspiration
+      - action: utter_inspiration
+      - action: utter_followup
+      - intent: ask_another
+      - action: utter_another_prompt
+      - intent: ask_success
+      - action: utter_success
+      - action: utter_followup

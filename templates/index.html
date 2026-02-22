@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuoteBot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg-a: #f7fbff;
+        --bg-b: #eaf4ff;
+        --panel: #ffffff;
+        --panel-soft: #f6fbff;
+        --text: #1f2a37;
+        --muted: #667085;
+        --accent: #0a7f8c;
+        --accent-2: #f97316;
+        --user: #0a7f8c;
+        --bot: #eef2f7;
+        --line: #dde6ef;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Manrope", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 12% 18%, #dff3ff 0, transparent 22%),
+          radial-gradient(circle at 88% 82%, #ffe5d4 0, transparent 20%),
+          linear-gradient(145deg, var(--bg-a), var(--bg-b));
+        display: grid;
+        place-items: center;
+        padding: 18px;
+      }
+
+      .app {
+        width: min(980px, 100%);
+        height: min(780px, 94vh);
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        box-shadow: 0 18px 40px #10233a1a;
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        overflow: hidden;
+      }
+
+      .header { padding: 20px 22px 8px; }
+      .title { margin: 0; font-size: clamp(1.35rem, 2.6vw, 2rem); letter-spacing: -0.02em; }
+      .subtitle { margin: 8px 0 0; color: var(--muted); font-size: 0.95rem; }
+
+      .chips {
+        padding: 0 22px 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip {
+        border: 1px solid #cae0f0;
+        background: #f7fbff;
+        color: #0b4f72;
+        border-radius: 999px;
+        padding: 8px 12px;
+        font: inherit;
+        font-size: 0.84rem;
+        cursor: pointer;
+      }
+
+      .chat {
+        margin: 0 16px;
+        border: 1px solid var(--line);
+        background: var(--panel-soft);
+        border-radius: 16px;
+        padding: 14px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .msg {
+        max-width: min(82%, 620px);
+        padding: 11px 13px;
+        border-radius: 14px;
+        line-height: 1.45;
+        font-size: 0.93rem;
+        white-space: pre-wrap;
+      }
+
+      .msg.user {
+        margin-left: auto;
+        background: var(--user);
+        color: #fff;
+        border-bottom-right-radius: 4px;
+      }
+
+      .msg.bot {
+        background: var(--bot);
+        border-bottom-left-radius: 4px;
+      }
+
+      .composer { padding: 14px 16px 16px; }
+
+      .row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+      }
+
+      .input {
+        width: 100%;
+        border: 1px solid #cfdae6;
+        border-radius: 12px;
+        padding: 12px 14px;
+        font: inherit;
+        outline: none;
+      }
+
+      .input:focus {
+        border-color: #72b4cc;
+        box-shadow: 0 0 0 3px #72b4cc33;
+      }
+
+      .send {
+        border: 0;
+        border-radius: 12px;
+        padding: 0 16px;
+        font: inherit;
+        font-weight: 700;
+        color: #fff;
+        background: linear-gradient(125deg, var(--accent), var(--accent-2));
+        cursor: pointer;
+      }
+
+      .hint { margin: 8px 0 0; color: var(--muted); font-size: 0.78rem; }
+
+      @media (max-width: 700px) {
+        body { padding: 0; }
+        .app { height: 100vh; border-radius: 0; }
+        .msg { max-width: 92%; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <h1 class="title">QuoteBot Emotion Assistant</h1>
+        <p class="subtitle">Chat in English, Hindi, or Telugu. Ask quotes or share real feelings like stress/anxiety/sadness.</p>
+      </header>
+
+      <section class="chips">
+        <button class="chip" data-message="i need motivation">Motivation</button>
+        <button class="chip" data-message="मुझे प्रेरणा चाहिए">Hindi Inspiration</button>
+        <button class="chip" data-message="నాకు success quote కావాలి">Telugu Success</button>
+        <button class="chip" data-message="i am stressed">Stress</button>
+        <button class="chip" data-message="मुझे घबराहट हो रही है">Anxiety (Hindi)</button>
+        <button class="chip" data-message="నాకు ఒంటరిగా అనిపిస్తోంది">Lonely (Telugu)</button>
+        <button class="chip" data-message="tell me something funny">Funny</button>
+        <button class="chip" data-message="another">Another</button>
+      </section>
+
+      <section id="chat" class="chat" aria-live="polite"></section>
+
+      <form id="form" class="composer">
+        <div class="row">
+          <input id="message" class="input" type="text" placeholder="Type your message..." required autocomplete="off" />
+          <button type="submit" class="send">Send</button>
+        </div>
+        <p class="hint">Backend: Flask on 8010, Rasa on 5005.</p>
+      </form>
+    </main>
+
+    <script>
+      const chat = document.getElementById("chat");
+      const form = document.getElementById("form");
+      const input = document.getElementById("message");
+      const chips = document.querySelectorAll(".chip");
+      const sender = localStorage.getItem("quotebot_sender") || `user-${Math.random().toString(16).slice(2, 10)}`;
+      localStorage.setItem("quotebot_sender", sender);
+
+      function append(role, text) {
+        if (!text) return;
+        const div = document.createElement("div");
+        div.className = `msg ${role}`;
+        div.textContent = text;
+        chat.appendChild(div);
+        chat.scrollTop = chat.scrollHeight;
+      }
+
+      function typing(show) {
+        const current = document.getElementById("typing");
+        if (show && !current) {
+          const div = document.createElement("div");
+          div.id = "typing";
+          div.className = "msg bot";
+          div.textContent = "Typing...";
+          chat.appendChild(div);
+          chat.scrollTop = chat.scrollHeight;
+        }
+        if (!show && current) current.remove();
+      }
+
+      async function sendMessage(message) {
+        append("user", message);
+        typing(true);
+
+        try {
+          const res = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ sender, message }),
+          });
+
+          const data = await res.json();
+          typing(false);
+
+          if (!res.ok) {
+            append("bot", data.error || "Request failed.");
+            return;
+          }
+
+          const messages = data.messages || [];
+          if (!messages.length) {
+            append("bot", "No response from server.");
+            return;
+          }
+
+          messages.forEach((m) => append("bot", m.text));
+        } catch (err) {
+          typing(false);
+          append("bot", "Connection failed. Ensure both servers are running.");
+        }
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const value = input.value.trim();
+        if (!value) return;
+        input.value = "";
+        sendMessage(value);
+      });
+
+      chips.forEach((chip) => chip.addEventListener("click", () => sendMessage(chip.dataset.message)));
+
+      append("bot", "Hi. Tell me your feeling or ask for a quote category.");
+    </script>
+  </body>
+</html>
