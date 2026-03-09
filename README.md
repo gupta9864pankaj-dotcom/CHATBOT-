@@ -165,6 +165,81 @@ RASA_ENDPOINT="http://127.0.0.1:5005/webhooks/rest/webhook" python app.py
 
 If `/status` does not open, Rasa backend is not running correctly. Check Terminal 1 logs and fix that first.
 
+## Direct Run On Any PC/Laptop
+
+Repository:
+
+- `https://github.com/gupta9864pankaj-dotcom/CHATBOT-.git`
+
+### Windows (PowerShell)
+
+```powershell
+git clone https://github.com/gupta9864pankaj-dotcom/CHATBOT-.git
+cd CHATBOT-
+
+winget install -e --id Python.Python.3.10
+
+py -3.10 -m venv rasa_env
+.\rasa_env\Scripts\Activate.ps1
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install "rasa==3.6.21"
+python -m pip install -r requirements-web.txt
+python -m rasa train
+```
+
+Run in 2 terminals:
+
+Terminal 1:
+
+```powershell
+cd CHATBOT-
+.\rasa_env\Scripts\Activate.ps1
+python -m rasa run --enable-api --cors "*" --port 5005
+```
+
+Terminal 2:
+
+```powershell
+cd CHATBOT-
+.\rasa_env\Scripts\Activate.ps1
+$env:RASA_ENDPOINT="http://127.0.0.1:5005/webhooks/rest/webhook"
+$env:WEB_PORT="8010"
+python app.py
+```
+
+### macOS/Linux
+
+```bash
+git clone https://github.com/gupta9864pankaj-dotcom/CHATBOT-.git
+cd CHATBOT-
+python3.10 -m venv rasa_env
+source rasa_env/bin/activate
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install "rasa==3.6.21"
+python -m pip install -r requirements-web.txt
+python -m rasa train
+python -m rasa run --enable-api --cors "*" --port 5005
+```
+
+Open another terminal:
+
+```bash
+cd CHATBOT-
+source rasa_env/bin/activate
+RASA_ENDPOINT="http://127.0.0.1:5005/webhooks/rest/webhook" WEB_PORT=8010 python app.py
+```
+
+Open browser:
+
+- `http://127.0.0.1:8010`
+
+If you get `No module named rasa`, you are using the wrong Python. Run with the venv Python directly:
+
+```powershell
+.\rasa_env\Scripts\python.exe -m rasa --version
+.\rasa_env\Scripts\python.exe -m rasa train
+```
+
 ## License
 
 For academic and learning use.
